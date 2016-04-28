@@ -1,30 +1,30 @@
-//172.1
+//172.2
 //Updated by CT
 [ENABLE]
-0073CC57: // Somewhere down CDropPool::TryPickUpDrop
+0073CD27: // Somewhere down CDropPool::TryPickUpDrop
 cmp [esi+44],0 // Follow jne 0073328F -> mov ecx,[esi+48]
-jz 0073CCEB// lea ecx,[esp+20]
+jz 0073CDBB// lea ecx,[esp+20]
 push ecx
 mov ecx,[esp+4C] // Follow jne 0073328F -> mov eax,[esp+4C]
 mov [ecx],ebp
 mov [ecx+4],eax
 pop ecx
-jmp 0073CCBF // Address in jne
+jmp 0073CDA6 // Address in jne
 dw 9090
 
-0190F400: // CWvsContext::SendBoobyTrapAlert
+0190F450: // CWvsContext::SendBoobyTrapAlert
 ret 0004
 
 [DISABLE]
-0073CC57: // 85 C0 75 ? 8D ? 24 ? C7 ? 24 ? ? ? ? ? E8 ? ? ? ? 8B
+0073CD27: // 85 C0 75 ? 8D ? 24 ? C7 ? 24 ? ? ? ? ? E8 ? ? ? ? 8B
 push eax
 push ebp
 lea eax,[esp+30]
 push eax
 call dword ptr [0211155C]
 test eax,eax
-jne 0073CCBF
+jne 0073CD8F
 lea ecx,[esp+20]
 
-0190F400: // push FF/-01 below: E9 ? ? ? ? CC CC CC CC CC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 ? ? A1 [Third result]
+0190F450: // push FF/-01 below: E9 ? ? ? ? CC CC CC CC CC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 ? ? A1 [Third result]
 db 6A FF 68

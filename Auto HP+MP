@@ -1,4 +1,4 @@
-//171.3
+//Updated to v172.2 by Randomcity2
 //AutoPot by ClanTag
 //Credits - ShivvTek for updating PressKey + whoever created PressKey.
 [ENABLE]
@@ -31,18 +31,18 @@ mov [esi+00002AB4],edi
 mov [HealthVar],edi
 test edi,edi
 je HealthEnd
-mov ecx,[020C5608]
+mov ecx,[020FC988]
 test ecx,ecx
 je HealthEnd
 mov [ecx+58],#20
-cmp [HealthVar],#5500 //Change Health Potting Value
+cmp [HealthVar],#3500 //Change Health Potting Value
 jge HealthEnd
 mov edx, PAGEUP //Change Health Key
 call PressKey
 
 HealthEnd:
 popad
-jmp 01434ED3
+jmp 01450ED3
 
 
 GiveMana:
@@ -51,42 +51,42 @@ mov [esi+00002AB8],edi
 mov [ManaVar],edi
 test edi,edi
 je ManaEnd
-mov eax,[020C5608]
+mov eax,[020FC988]    //Randomcity2 here ..  .where the hell do I find the update value for that? ** I'm just gonna guess at 8B ? ? ? ? ? 8B 4A ? 8D ? ? 3B CD 74 ? 8B ? ? ? 8B ? 6B ? ? 99  in the mov at beginning of this mess of code for the first green result
 test eax,eax
 je ManaEnd
 mov [eax+5c],#20
-cmp [ManaVar],#1500 //Change Mana Potting Value
+cmp [ManaVar],#17000 //Change Mana Potting Value
 jge ManaEnd
 mov edx, PAGEDOWN //Change Mana Key
 call PressKey
 
 ManaEnd:
 popad
-jmp 01434F3A
+jmp 01450F3A
 
 
 PressKey:
-mov esi,[004B4320] //A1 ? ? ? ? 8B ? ? ? ? ? 85 ? 74 ? 8B ? ? 51 83 ? ? 50 E8 ? ? ? ? 98 83 ? ? 3D ? ? ? ? 74 ? 3D ? ? ? ? 74 [in MOV]
+mov esi,[020F81B4] //A1 ? ? ? ? 8B ? ? ? ? ? 85 ? 74 ? 8B ? ? 51 83 ? ? 50 E8 ? ? ? ? 98 83 ? ? 3D ? ? ? ? 74 ? 3D ? ? ? ? 74 [in MOV]
 mov ecx,[esi+A4]
 push edx
 push 00
-call 017F3640 //A1 ?? ?? ?? ?? 85 C0 74 ?? 8D 48 ?? 8B 01 8B 00
+call 01818530 //A1 ?? ?? ?? ?? 85 C0 74 ?? 8D 48 ?? 8B 01 8B 00
 ret
 
-01434EAF:
+01450EAF:
 jmp GiveHealth
 nop
 
-01434F16:
+01450F16:
 jmp GiveMana
 nop
 
 [DISABLE]
-
-01434EAF:
+//89 8E ? ? 00 00 80 BE ? ? 00 00 00 75 {Scroll up till you see it}[GOD DAMN THAT ASSHOLE THAT GAVE ME A HEADACHE LEAVING THESE AOB'S OUT]
+01450EAF:
 mov [esi+00002AB4],edi
-
-01434F16:
+// Add 0x67 to address above or just scroll down from AOB address till you see it
+01450F16:
 mov [esi+00002AB8],edi
 
 DeAlloc(GiveHealth)

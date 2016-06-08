@@ -1,9 +1,9 @@
-//171.3
-// Demon Slayer Final Slash v171.1 Updated By toko214
+//173.1
+//Demon Slayer Final Slash Updated By Randomcity2
 [ENABLE]
-016B0B3E:
+016E60BC:
 push 01D909B0
 
 [DISABLE]
-016B0B3E: // 68 C4 05 D9 01 8B CE E8
+016E60BC: // fourth result in assembly scan for 'push 01D905C4' or second result with this AOB (remove 1 byte at a time from end till it hits something if no result next patch)- 68 ? ? ? ? 8B CE FF D0 E9 ? ? ? ? 8B 16 8B 42 ? 8B CE FF D0 50 E8 ? ? ? ?
 push 01D905C4
